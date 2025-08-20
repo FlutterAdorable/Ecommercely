@@ -38,9 +38,9 @@ loginForm.addEventListener('submit', async (e) => {
     const userData = snapshot.val();
 
     if (userData.type === 'admin') {
-      window.location.href = '../Admin_Dashbord.html';
+      window.location.href = '../admin_Dashbord.html';
     } else if (userData.type === 'customer') {
-      window.location.href = '/';
+      window.location.href = '../User_Product.html';
     } else {
       errorDiv.textContent = 'User type is invalid.';
       await auth.signOut();

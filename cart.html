@@ -330,7 +330,6 @@
 
       .table-responsive {
         border-radius: 15px;
-        overflow-x: auto !important;
       }
 
       .quantity-controls {
@@ -338,17 +337,9 @@
         gap: 5px;
       }
     }
-
-
-    #btn-theme {
-      position: fixed;
-      right: 10px;
-      bottom: 14px;
-      z-index: 10;
-      background-color: var(--bs-blue);
-    }
   </style>
 
+  <link rel="stylesheet" href="ModeChange.css">
 
 </head>
 
@@ -388,10 +379,10 @@
 
     <!-- Action Buttons -->
     <div class="action-buttons">
-      <button class="btn btn-primary btn-lg me-3 my-3" id="btnPlaceOrder">
+      <button class="btn btn-primary btn-lg me-3" id="btnPlaceOrder">
         <i class="fas fa-paper-plane me-2"></i>إرسال الطلب
       </button>
-      <a href="./" class="btn btn-secondary btn-lg">
+      <a href="./User_Product.html" class="btn btn-secondary btn-lg">
         <i class="fas fa-arrow-right me-2"></i>العودة للمنتجات
       </a>
     </div>
@@ -430,22 +421,22 @@
               <i class="fas fa-shopping-cart"></i>
               <h4>العربة فارغة</h4>
               <p>لم تقم بإضافة أي منتجات للعربة بعد</p>
-              <a href="./" class="btn btn-primary">
+              <a href="./User_Product.html" class="btn btn-primary">
                 <i class="fas fa-shopping-bag me-2"></i>تسوق الآن
               </a>
             </div>
           </td>
         </tr>
+        
       `;
-        totalPriceEl.textContent = '0';
+        totalPriceEl.textContent = 0
         btnPlaceOrder.disabled = true;
         return;
       }
 
       for (const id in cart) {
         const item = cart[id];
-        console.log(item)
-        const itemTotal = item.price * item.quantity;
+        const itemTotal = (item.price * item.quantity) || 0;
         total += itemTotal;
 
         const tr = document.createElement('tr');
@@ -542,6 +533,7 @@
         let cart = JSON.parse(localStorage.getItem('cart'));
         if (!cart || Object.keys(cart).length === 0) {
           showMessage("العربة فارغة", "warning");
+          total = 0
           return;
         }
 
@@ -572,7 +564,7 @@
 
           // Redirect after success
           setTimeout(() => {
-            window.location.href = './';
+            window.location.href = './User_Product.html';
           }, 3000);
         } catch (error) {
           showMessage("حدث خطأ أثناء إرسال الطلب: " + error.message, "danger");
