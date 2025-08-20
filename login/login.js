@@ -38,7 +38,7 @@ loginForm.addEventListener('submit', async (e) => {
     const userData = snapshot.val();
 
     if (userData.type === 'admin') {
-      window.location.href = '../admin_Dashbord.html';
+      window.location.href = '../Admin_Dashbord.html';
     } else if (userData.type === 'customer') {
       window.location.href = '/';
     } else {
