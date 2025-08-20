@@ -42,7 +42,6 @@ project-root/
 │   firebase-config.js
 │   index.html
 │   lightMode.css
-│   login.html
 │   README.md
 │   Register.html
 │   theme.js
